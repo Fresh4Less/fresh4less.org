@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 				livereload: true
 			},
 			js: {
-				files: [clientSrcDir + '/**/*.js', serverSrcDir + '/**/*.js'],
+				files: [clientSrcDir + '/**/*', serverSrcDir + '/**/*'],
 				tasks: ['build', 'express:dev']
 			}
 		},
@@ -122,9 +122,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	
-	grunt.registerTask('default', ['build']);
+	grunt.registerTask('default', ['jshint', 'build']);
 	grunt.registerTask('build', ['env:dev', 'clean:build', 'copy:build', 'concat', 'jekyll:dist', 'uglify', 'cssmin']);
-	grunt.registerTask('dev', ['build', 'express:dev', 'watch:js']);
+	grunt.registerTask('dev', ['build', 'express:dev']);
 	grunt.registerTask('test', ['env:test', 'jshint', 'mochaTest']);
-	grunt.registerTask('watch', ['default', 'watch:js']);
+	grunt.registerTask('watch', ['build', 'watch:js']);
 };

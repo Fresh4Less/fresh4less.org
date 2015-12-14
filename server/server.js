@@ -24,7 +24,7 @@ function start(appPort) {
 	//app.use(routes);
 	//app.use(express.static(__dirname + "/../client"));
 	app.use(express.static(__dirname + "/../dist"));
-	app.use('/bower_components',express.static(__dirname + "/../bower_components"));
+	//app.use('/bower_components',express.static(__dirname + "/../bower_components"));
 }
 
 function close() {

@@ -1,5 +1,3 @@
-/*Fresh4Less.org - Fresh4Less [ Elliot Hatch, Samuel Davidson ]*/
-
 /* ===========================================================
  * This code is based on the work by Jason Brown (Loktar00)
  * https://github.com/loktar00/JQuery-Snowfall
