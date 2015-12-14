@@ -17,7 +17,7 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: fresh4less
 github_username:  fresh4less
 
-permalink: /:catagories/:title
+permalink: /:categories/:title
 
 # Build settings
 markdown: kramdown

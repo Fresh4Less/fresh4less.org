@@ -9,7 +9,7 @@ var serverTestFiles = 'test/server';
 module.exports = function(grunt) {
 
 	//Config
-	grunt.initConfig({
+	var config = {
 		pkg: grunt.file.readJSON('package.json'),
 		env : {
 			dev: {
@@ -32,8 +32,23 @@ module.exports = function(grunt) {
 				banner: "/*Fresh4Less.org - Fresh4Less [ Elliot Hatch, Samuel Davidson ]*/\n\n"
 			},
 			dist: {
-				src: [buildDir + 'javascript/**/*.js'],
+				src: [buildDir + '/_javascript/**/*.js'],
 				dest: buildDir + '/javascript/fresh.js',
+			}
+		},
+		uglify: {
+			build: {
+				files: {
+					//see end of config
+				},
+				sourceMap: true
+			}
+		},
+		cssmin: {
+			build: {
+				files: {
+					//see end of config
+				}
 			}
 		},
 		express: {
@@ -70,23 +85,33 @@ module.exports = function(grunt) {
 			}
 		},
 		copy: {
-			files: {
+			build: {
 				cwd: clientSrcDir,  // set working folder / root to copy
 				src: '**/*',           // copy all files and subfolders
 				dest: buildDir,    // destination folder
 				expand: true           // required when using cwd
 			}
 		},
+		clean: {
+			build: [buildDir, distDir]
+		},
 		jekyll: {
 			options: {
-				//src: buildDir,
-				//dest: dist
-				config: buildDir + '_config.yml'
+				src: buildDir,
+			},
+			dist: {
+				dest: distDir
 			}
 		}
-	});
+	};
+
+	config.uglify.build.files[(distDir + '/javascript/fresh.min.js')] = [distDir + '/javascript/fresh.js'];
+	config.cssmin.build.files[(distDir + '/css/main.min.css')] = [distDir + '/css/main.css'];
+
+	grunt.initConfig(config);
 	
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-env');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
@@ -94,13 +119,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-express-server');
 	grunt.loadNpmTasks('grunt-mocha-test');
 	grunt.loadNpmTasks('grunt-jekyll');
-//	grunt.loadNpmTasks('grunt-contrib-uglify');
-//	grunt.loadNpmTasks('grunt-contrib-sass');
-//	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	
-//	grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'sass', 'cssmin']);
 	grunt.registerTask('default', ['build']);
-	grunt.registerTask('build', ['env:dev', 'copy', 'concat', 'jekyll']);
+	grunt.registerTask('build', ['env:dev', 'clean:build', 'copy:build', 'concat', 'jekyll:dist', 'uglify', 'cssmin']);
 	grunt.registerTask('dev', ['build', 'express:dev', 'watch:js']);
 	grunt.registerTask('test', ['env:test', 'jshint', 'mochaTest']);
 	grunt.registerTask('watch', ['default', 'watch:js']);
