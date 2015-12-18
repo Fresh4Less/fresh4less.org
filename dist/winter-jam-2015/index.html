@@ -20,10 +20,18 @@
         <div class="winter-jam-2015-wrapper">
 	<canvas id="snow-canvas"></canvas>
 	<h1 class="page-heading">Fresh4Less Winter Solstice Jam 2015</h1>
+	<h1 class="time-remaining">
+		<span id="jam-time-remaining">Jam time remaining:
+			<span class="jam-days">0</span> days,
+			<span class="jam-hours">0</span> hours,
+			<span class="jam-minutes">0</span> minutes,
+			<span class="jam-seconds">0</span> seconds
+		</span>
+	</h1>
 	<div class="page-content">
 		<div class="wrapper">
 			<p>This holiday season join Fresh4Less for the semi-annual Solstice
-			Jam!  Make something interactive in 24 hours and share it for a
+			Jam! Make something interactive in 24 hours and share it for a
 			chance to win BIG PRIZES.</p>
 			<h2>What is the Fresh4Less Winter Solstice Jam?</h2>
 			<p>The Winter Solstice Jam is a competition to create an
@@ -36,7 +44,7 @@
 			<h2>What can I enter?</h2>
 			<p>Anything interactive. It's up to you what interactive means.
 			Your entry doesn't necessarily need to require a computer to be
-			experienced.</p>
+			experienced, but it does need to be submitted on this webpage.</p>
 			<p>The majority of your entry should be designed and created during
 			the 24 hours you participate in the jam.  It's okay to use
 			frameworks, templates, and some art and audio assets not created
@@ -53,6 +61,12 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function(){
+		initSnowCanvas(window);
+		initWinterJam2015(window);
+	});
+</script>
 
   <script type="text/javascript" src="/javascript/fresh.js"></script>
 

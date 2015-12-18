@@ -4,7 +4,7 @@
  * http://www.thepetedesign.com
  * ========================================================== */
 
-(function(window) {
+function initSnowCanvas(window) {
 var snowCanvas = document.getElementById("snow-canvas");
 letItSnow(snowCanvas, {
 	speed: 0,
@@ -17,16 +17,16 @@ letItSnow(snowCanvas, {
 	image: false
 });
 
-var defaults = {
-	speed: 0,
-	interaction: true,
-	size: 2,
-	count: 200,
-	opacity: 0,
-	color: "#ffffff",
-	windPower: 0,
-	image: false
-};
+//var defaults = {
+	//speed: 0,
+	//interaction: true,
+	//size: 2,
+	//count: 200,
+	//opacity: 0,
+	//color: "#ffffff",
+	//windPower: 0,
+	//image: false
+//};
 
 function letItSnow(canvas, options, isCopy) {
 	//var settings = $.extend({}, defaults, options),
@@ -212,5 +212,5 @@ function letItSnow(canvas, options, isCopy) {
 		});
 	}
 }
-})(window);
+}
 

@@ -4,18 +4,18 @@ layout: bare
 <div class="winter-jam-2015-wrapper">
 	<canvas id="snow-canvas"></canvas>
 	<h1 class="page-heading">Fresh4Less Winter Solstice Jam 2015</h1>
-	<h1 class="page-heading">
-		<span id="jam-time-remaining">
-			<span class="jam-days">0</span>
-			<span class="jam-hours">0</span>
-			<span class="jam-minutes">0</span>
-			<span class="jam-seconds">0</span>
+	<h1 class="time-remaining">
+		<span id="jam-time-remaining">Jam time remaining:
+			<span class="jam-days">0</span> days,
+			<span class="jam-hours">0</span> hours,
+			<span class="jam-minutes">0</span> minutes,
+			<span class="jam-seconds">0</span> seconds
 		</span>
 	</h1>
 	<div class="page-content">
 		<div class="wrapper">
 			<p>This holiday season join Fresh4Less for the semi-annual Solstice
-			Jam!  Make something interactive in 24 hours and share it for a
+			Jam! Make something interactive in 24 hours and share it for a
 			chance to win BIG PRIZES.</p>
 			<h2>What is the Fresh4Less Winter Solstice Jam?</h2>
 			<p>The Winter Solstice Jam is a competition to create an
@@ -45,3 +45,9 @@ layout: bare
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', function(){
+		initSnowCanvas(window);
+		initWinterJam2015(window);
+	});
+</script>
