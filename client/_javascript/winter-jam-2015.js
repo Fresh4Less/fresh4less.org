@@ -1,5 +1,6 @@
 
 function initWinterJam2015(window) {
+	// countdown timer
 	var jamTimeRemainingElem = window.document.getElementById('jam-time-remaining');
 	var jamDaysElem = null;
 	var jamHoursElem = null;
@@ -7,7 +8,6 @@ function initWinterJam2015(window) {
 	var jamSecondsElem = null;
 	for(var i = 0; i < jamTimeRemainingElem.childNodes.length; i++) {
 		var node = jamTimeRemainingElem.childNodes[i];
-		console.log(node);
 		switch(node.className) {
 			case 'jam-days':
 				jamDaysElem = node;
@@ -58,6 +58,21 @@ function initWinterJam2015(window) {
 	function padZeroes(num, size) {
 		var s = "000000000" + num;
 		return s.substr(s.length-size);
+	}
+
+	// modal
+	$('.join-jam-button').click(enableJamModal);
+	var joinJamModal = $('.join-jam-modal');
+	var joinJamModalContent = joinJamModal.find('.modal-content');
+	joinJamModal.click(disableJamModal);
+	joinJamModalContent.css('top', window.innerHeight / 2 - joinJamModalContent.height() / 2);
+	joinJamModalContent.css('left', window.innerWidth / 2 - joinJamModalContent.width() / 2);
+
+	function enableJamModal() {
+		joinJamModal.css('display', 'block');
+	}
+	function disableJamModal() {
+		joinJamModal.css('display', 'none');
 	}
 
 }
