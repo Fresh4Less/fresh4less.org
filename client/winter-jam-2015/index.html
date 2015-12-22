@@ -32,8 +32,9 @@ layout: bare
 			<h2>What can I enter?</h2>
 			<p>Anything interactive. It's up to you what interactive means.
 			Your entry doesn't necessarily need to require a computer to be
-			experienced, but it does need to be submitted on this webpage. Your
-			entry should be related to the theme in some way.</p>
+			experienced, but it does need to be submitted on this webpage so
+			anyone in the world can experience it for themself. Your entry
+			should be related to the theme in some way.</p>
 			<p>The majority of your entry should be designed and created during
 			the 24 hours you participate in the jam.  It's okay to use
 			frameworks, templates, and some art and audio assets not created
@@ -42,16 +43,36 @@ layout: bare
 			<p>Whenever you're ready, click the button above to join the jam.
 			Enter your name and you'll be given a <em>secret code</em>. Once
 			you enter, the 24 hour timer starts ticking down. You can submit
-			files using your <em>secret code</em> as many times as you would
-			like before the countdown reaches zero.  Once it hits zero, you
-			will not be able to upload any more files.</p>
+			files by selecting your name from the submission list below and
+			entering your <em>secret code</em>. You may submit as many times as
+			you would like before the countdown reaches zero.  Once it hits
+			zero, you will not be able to upload any more files.</p>
 
 		</div>
 	</div>
 	<div class="join-jam-modal">
 		<div class="modal-content">
-			<h1>Get Jammin!</h1>
+			<h1>Join the Jam</h1>
+			<form class="join-jam-form" method="POST" action="/api/winter-jam-2015/users">
+				<div>
+					<label for="join-jam-name">Name:</label>
+					<input type="text" id="join-jam-name" name="name" required />
+				</div>
+				<div>
+					<label for="join-jam-email">Email:</label>
+					<input type="email" id="join-jam-email" name="email" required />
+				</div>
+				<div class="join-jam-submit-button">
+					<label>&nbsp;</label>
+					<button type="submit">Get Jammin!</button>
+				</div>
+			</form>
+			<div class="join-jam-success">
+				<h2>Your secret code:</h2>
+				<h1 class="secret-code"></h1>
+				<p>Don't lose this code! You will need it to upload your submission.</p>
 			</div>
+		</div>
 	</div>
 </div>
 <script type="text/javascript">

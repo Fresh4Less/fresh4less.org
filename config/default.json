@@ -1,8 +1,18 @@
 {
 	"port": 8080,
-	"dbConfig": {
-		"host": "127.0.0.1",
-		"port": 27017,
-		"dbName": "fresh4less-org" 
+	"winter-jam-2015": {
+		"dbConfig": {
+			"host": "127.0.0.1",
+			"port": 27017,
+			"dbName": "winter_jam_2015" 
+		},
+		"endTime": "2016-01-01T07:00:00.000Z",
+		"secretCodePrefixes": [
+			"christmas",
+			"hanukkah",
+			"hogmanay",
+			"kwanzaa",
+			"masopust",
+			"solstice"]
 	}
 }

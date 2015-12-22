@@ -10,6 +10,12 @@ dl, dd, ol, ul, figure {
 /**
  * Basic styling
  */
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
 body {
   font: 400 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #111;
@@ -486,6 +492,8 @@ html body {
   .winter-jam-2015-wrapper .time-remaining {
     text-align: center;
     color: #ccccff; }
+  .winter-jam-2015-wrapper #jam-time-remaining.ended {
+    color: #ff5555; }
   .winter-jam-2015-wrapper .jam-theme {
     text-align: center; }
   .winter-jam-2015-wrapper .wrapper {
@@ -533,9 +541,57 @@ html body {
     background: rgba(255, 255, 255, 0.4); }
     .winter-jam-2015-wrapper .join-jam-modal .modal-content {
       position: fixed;
-      background: white;
-      color: black;
-      width: 600px; }
+      background: #1e1e1e;
+      color: white;
+      width: 600px;
+      padding: 10px;
+      border: 1px solid #e0e0e0;
+      border-radius: 50px; }
+      .winter-jam-2015-wrapper .join-jam-modal .modal-content h1 {
+        text-align: center;
+        font-family: 'Tangerine', cursive;
+        font-size: 5em; }
+      .winter-jam-2015-wrapper .join-jam-modal .modal-content h2 {
+        text-align: center;
+        font-size: 2em;
+        color: white; }
+      .winter-jam-2015-wrapper .join-jam-modal .modal-content div {
+        margin: 15px 0px;
+        padding: 1px;
+        font-size: 1.3em; }
+      .winter-jam-2015-wrapper .join-jam-modal .modal-content label {
+        float: left;
+        width: 20%;
+        text-align: right;
+        padding-right: 10px;
+        margin-top: 10px;
+        color: #dddddd; }
+      .winter-jam-2015-wrapper .join-jam-modal .modal-content input[type="text"], .winter-jam-2015-wrapper .join-jam-modal .modal-content input[type="email"] {
+        border: 1px solid #dadada;
+        color: #222222;
+        margin: 2px 6px 6px 5px;
+        padding: 3px 3px 3px 5px;
+        outline: 0 none;
+        width: 70%;
+        font-size: 1.4em; }
+      .winter-jam-2015-wrapper .join-jam-modal .modal-content button {
+        border: 1px solid #dadada;
+        color: #222222;
+        margin: 2px 6px 16px 5px;
+        padding: 10px 25px;
+        outline: 0 none;
+        font-size: 1.5em; }
+      .winter-jam-2015-wrapper .join-jam-modal .modal-content .join-jam-success {
+        display: none; }
+        .winter-jam-2015-wrapper .join-jam-modal .modal-content .join-jam-success .secret-code {
+          color: #ccccff;
+          font-family: 'Tangerine', cursive;
+          font-size: 5em;
+          margin: 0; }
+        .winter-jam-2015-wrapper .join-jam-modal .modal-content .join-jam-success p {
+          font-size: 1.2em;
+          width: 80%;
+          margin: 0 auto; }
 
 #snow-canvas {
   position: fixed;

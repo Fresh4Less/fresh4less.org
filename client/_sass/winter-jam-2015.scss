@@ -37,6 +37,9 @@ html body {
 		text-align: center;
 		color: #ccccff;
 	}
+	#jam-time-remaining.ended {
+		color: #ff5555;
+	}
 
 	.jam-theme {
 		text-align: center;
@@ -96,9 +99,68 @@ html body {
 		background: rgba(255,255,255,0.4);
 		.modal-content {
 			position: fixed;
-			background: rgba(255,255,255,1);
-			color: black;
+			background: rgba(30,30,30,1);
+			color: white;
 			width: 600px;
+			padding: 10px;
+			border: 1px solid #e0e0e0;
+			border-radius: 50px;
+
+			h1 {
+				text-align: center;
+				font-family: 'Tangerine', cursive;
+				font-size: 5em;
+			}
+			h2 {
+				text-align: center;
+				font-size: 2em;
+				color: white;
+			}
+			div {
+				margin: 15px 0px;
+				padding: 1px;
+				font-size: 1.3em;
+			}
+			label {
+				float: left;
+				width: 20%;
+				text-align: right;
+				padding-right: 10px;
+				margin-top: 10px;
+				color: #dddddd;
+			}
+			input[type="text"], input[type="email"] {
+				border: 1px solid #dadada;
+				color: #222222;
+				margin: 2px 6px 6px 5px;
+				padding: 3px 3px 3px 5px;
+				outline: 0 none;
+				width: 70%;
+				font-size: 1.4em;
+			}
+			button {
+				border: 1px solid #dadada;
+				color: #222222;
+				margin: 2px 6px 16px 5px;
+				padding: 10px 25px;
+				outline: 0 none;
+				font-size: 1.5em;
+			}
+
+			.join-jam-success {
+				display: none;
+				.secret-code {
+					color: #ccccff;
+					font-family: 'Tangerine', cursive;
+					font-size: 5em;
+					margin: 0;
+				}
+				p {
+					font-size: 1.2em;
+					width: 80%;
+					margin: 0 auto;
+				}
+			}
 		}
 	}
 }
