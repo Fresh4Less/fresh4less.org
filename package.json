@@ -39,6 +39,7 @@
     "config": "^1.17.1",
     "express": "^4.13.3",
     "fresh-validation": "^0.2.2",
-    "mongodb": "^2.0.52"
+    "mongodb": "^2.0.52",
+    "multer": "^1.1.0"
   }
 }

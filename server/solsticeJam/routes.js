@@ -1,4 +1,6 @@
 var express = require('express');
+var multer = require('multer');
+var upload = multer({ storage: multer.memoryStorage() });
 var ValidatorErrors = require('fresh-validation').Errors;
 var CustomErrors = require('../util/custom-errors');
 
@@ -7,20 +9,12 @@ var solsticeJamService = require('./service');
 module.exports = function(configName) {
 	var router = express.Router();
 
-	//router.get('/:pageId', function(req, res, next) {
-		//pagesService.getPage(req.params.pageId)
-			//.then(function(page) {
-				//res.status(200).json(page);
-			//})
-			//.catch(ValidatorErrors.ValidationError, function(err) {
-				//err.status = 400;
-				//next(err);
-			//})
-			//.catch(CustomErrors.NotFoundError, function(err) {
-				//err.status = 404;
-				//next(err);
-			//});
-	//});
+	router.get('/users', function(req, res, next) {
+		solsticeJamService.getUsers(configName)
+			.then(function(users) {
+				res.status(200).json(users);
+			});
+	});
 
 	router.post('/users', function(req, res, next) {
 		solsticeJamService.addUser(configName, req.body)
@@ -35,6 +29,10 @@ module.exports = function(configName) {
 				err.status = 403;
 				next(err);
 			});
+	});
+	router.post('/users/:username/submission', /*upload.single('submission'),*/ function(req, res, next) {
+		//console.log(req);
+		res.status(400).end();
 	});
 		return router;
 };

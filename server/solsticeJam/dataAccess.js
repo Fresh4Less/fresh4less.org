@@ -7,6 +7,26 @@ BPromise.promisifyAll(MongoDb);
 BPromise.promisifyAll(MongoClient);
 
 
+function getUsers(configName) {
+	return db.getDb(configName)
+		.then(function(db) {
+			return db.collection('users')
+				.find().sort([['_id', -1]]).toArrayAsync();
+		})
+		.then(function(users) {
+			if(!users || users.error) {
+				console.error('failed get');
+				console.error(users.error);
+			}
+			return users.map(function(u) {
+				return {
+					name: u.name,
+					beginDate: u._id.getTimestamp()
+				};
+			});
+		});
+}
+
 function addUser(configName, userParams) {
 	return db.getDb(configName)
 		.then(function(db) {
@@ -25,5 +45,6 @@ function addUser(configName, userParams) {
 }
 
 module.exports = {
+	getUsers: getUsers,
 	addUser: addUser
 };

@@ -8,6 +8,10 @@ var CustomErrors = require('../util/custom-errors');
 // initialze validator
 var validator = new Validator();
 
+function getUsers(configName) {
+	return usersDataAccess.getUsers(configName);
+}
+
 function addUser(configName, userParams) {
 	return BPromise.try(function() {
 		var configuration = config.get(configName);
@@ -16,9 +20,6 @@ function addUser(configName, userParams) {
 		}
 		validator.is(userParams, 'userParams').required().object()
 			.property('name').required().string()
-				.property('length').greaterThan(0).back()
-				.back()
-			.property('email').required().string()
 				.property('length').greaterThan(0).back()
 				.back();
 		validator.throwErrors();
@@ -29,5 +30,6 @@ function addUser(configName, userParams) {
 }
 
 module.exports = {
+	getUsers: getUsers,
 	addUser: addUser
 };

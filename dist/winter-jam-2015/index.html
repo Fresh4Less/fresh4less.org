@@ -32,7 +32,7 @@
 	<h1 class="jam-theme">Theme: Snowed in</h1>
 	<div class="page-content">
 		<div class="wrapper">
-			<p>This holiday season join Fresh4Less for the semi-annual Solstice
+			<p>Join Fresh4Less this holiday season for the semi-annual Solstice
 			Jam! Make something interactive in 24 hours and share it for a
 			chance to win SWEET PRIZES.</p>
 
@@ -60,14 +60,27 @@
 			<p>Whenever you're ready, click the button above to join the jam.
 			Enter your name and you'll be given a <em>secret code</em>. Once
 			you enter, the 24 hour timer starts ticking down. You can submit
-			files by selecting your name from the submission list below and
-			entering your <em>secret code</em>. You may submit as many times as
-			you would like before the countdown reaches zero.  Once it hits
-			zero, you will not be able to upload any more files.</p>
+			files by using the submission list below and entering your
+			<em>secret code</em>. You may submit as many times as you would
+			like before the countdown reaches zero.  Once it hits zero, you
+			will not be able to upload any more files.</p>
 
+			<h2>Participants</h2>
+			<table class="jam-participants-table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Time remaining</th>
+						<th>&nbsp;</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+			<div id="participants-error-message" class="error-message"></div>
 		</div>
 	</div>
-	<div class="join-jam-modal">
+	<div class="join-jam-modal modal">
 		<div class="modal-content">
 			<h1>Join the Jam</h1>
 			<form class="join-jam-form" method="POST" action="/api/winter-jam-2015/users">
@@ -75,13 +88,11 @@
 					<label for="join-jam-name">Name:</label>
 					<input type="text" id="join-jam-name" name="name" required />
 				</div>
-				<div>
-					<label for="join-jam-email">Email:</label>
-					<input type="email" id="join-jam-email" name="email" required />
-				</div>
 				<div class="join-jam-submit-button">
 					<label>&nbsp;</label>
 					<button type="submit">Get Jammin!</button>
+				</div>
+				<div class="error-message">
 				</div>
 			</form>
 			<div class="join-jam-success">
@@ -89,6 +100,29 @@
 				<h1 class="secret-code"></h1>
 				<p>Don't lose this code! You will need it to upload your submission.</p>
 			</div>
+		</div>
+	</div>
+	<div class="upload-modal modal">
+		<div class="modal-content">
+			<h1>Upload Submission</h1>
+			<form class="upload-form" method="POST">
+				<div>
+					<label for="upload-file">File:</label>
+					<input type="file" id="upload-file" name="file" required />
+				</div>
+				<div>
+					<label for="upload-secret-code">Secret Code:</label>
+					<input type="text" id="upload-secret-code" name="secretCode" required />
+				</div>
+				<div class="upload-submit-button">
+					<label>&nbsp;</label>
+					<button type="submit">Upload</button>
+				</div>
+				<div class="success-message">
+				</div>
+				<div class="error-message">
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

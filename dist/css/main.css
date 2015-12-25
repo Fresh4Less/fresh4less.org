@@ -476,27 +476,57 @@ html body {
   color: #fff;
   font-family: "Arial", sans-serif; }
   .winter-jam-2015-wrapper h1 {
-    font-size: 3em; }
+    font-size: 2em; }
   .winter-jam-2015-wrapper h2 {
-    font-size: 2.5em;
-    color: #ccccff;
+    font-size: 1.7em;
+    color: #afafff;
     margin-top: 1em; }
   .winter-jam-2015-wrapper p {
-    font-size: 1.5em;
-    font-style: normal; }
+    font-style: normal;
+    font-size: 1.2em; }
+  .winter-jam-2015-wrapper table {
+    font-size: 1.2em;
+    margin: 25px auto;
+    border-collapse: collapse;
+    border: 1px solid #eee;
+    /*tbody tr:nth-child(odd) {*/
+    /*background: #eee;*/
+    /*}*/ }
+    .winter-jam-2015-wrapper table tr:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff; }
+    .winter-jam-2015-wrapper table tr.jam-time-over td {
+      color: #888888; }
+    .winter-jam-2015-wrapper table tr.jam-time-over:hover td {
+      color: #fff; }
+    .winter-jam-2015-wrapper table th, .winter-jam-2015-wrapper table td {
+      /*color: #999;*/
+      border: 1px solid #eee;
+      padding: 5px 20px;
+      border-collapse: collapse; }
+    .winter-jam-2015-wrapper table th {
+      background: #000000;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 12px; }
+      .winter-jam-2015-wrapper table th.last {
+        border-right: none; }
+    .winter-jam-2015-wrapper table button {
+      font-size: 0.85em; }
   .winter-jam-2015-wrapper .page-heading {
     font-family: 'Tangerine', cursive;
     text-align: center;
-    font-size: 7em;
+    font-size: 5em;
     margin: 0.5em; }
   .winter-jam-2015-wrapper .time-remaining {
     text-align: center;
-    color: #ccccff; }
+    color: #afafff; }
   .winter-jam-2015-wrapper #jam-time-remaining.ended {
     color: #ff5555; }
   .winter-jam-2015-wrapper .jam-theme {
     text-align: center; }
   .winter-jam-2015-wrapper .wrapper {
+    width: 80%;
     max-width: -webkit-calc(1200px - (30px * 2));
     max-width: calc(1200px - (30px * 2)); }
   .winter-jam-2015-wrapper button {
@@ -515,9 +545,13 @@ html body {
     color: #333;
     border-color: #ccc;
     border: 1px solid transparent;
-    border-radius: 4px;
+    border-radius: 50px;
     font-family: inherit;
-    font-size: 1.5em; }
+    font-size: 1.2em; }
+    .winter-jam-2015-wrapper button:hover {
+      background-color: #ccc; }
+    .winter-jam-2015-wrapper button:active {
+      background-color: #aaa; }
   .winter-jam-2015-wrapper .join-jam-button {
     font-family: 'Tangerine', cursive;
     display: block;
@@ -527,11 +561,9 @@ html body {
     font-weight: 700;
     margin: 50px auto;
     border-radius: 50px; }
-    .winter-jam-2015-wrapper .join-jam-button:hover {
-      background-color: #ccc; }
-    .winter-jam-2015-wrapper .join-jam-button:active {
-      background-color: #aaa; }
-  .winter-jam-2015-wrapper .join-jam-modal {
+  .winter-jam-2015-wrapper .error-message {
+    color: #ff0000; }
+  .winter-jam-2015-wrapper .modal {
     position: fixed;
     left: 0;
     top: 0;
@@ -539,7 +571,7 @@ html body {
     width: 100%;
     height: 100%;
     background: rgba(255, 255, 255, 0.4); }
-    .winter-jam-2015-wrapper .join-jam-modal .modal-content {
+    .winter-jam-2015-wrapper .modal .modal-content {
       position: fixed;
       background: #1e1e1e;
       color: white;
@@ -547,26 +579,26 @@ html body {
       padding: 10px;
       border: 1px solid #e0e0e0;
       border-radius: 50px; }
-      .winter-jam-2015-wrapper .join-jam-modal .modal-content h1 {
+      .winter-jam-2015-wrapper .modal .modal-content h1 {
         text-align: center;
         font-family: 'Tangerine', cursive;
         font-size: 5em; }
-      .winter-jam-2015-wrapper .join-jam-modal .modal-content h2 {
+      .winter-jam-2015-wrapper .modal .modal-content h2 {
         text-align: center;
         font-size: 2em;
         color: white; }
-      .winter-jam-2015-wrapper .join-jam-modal .modal-content div {
+      .winter-jam-2015-wrapper .modal .modal-content div {
         margin: 15px 0px;
         padding: 1px;
         font-size: 1.3em; }
-      .winter-jam-2015-wrapper .join-jam-modal .modal-content label {
+      .winter-jam-2015-wrapper .modal .modal-content label {
         float: left;
         width: 20%;
         text-align: right;
         padding-right: 10px;
         margin-top: 10px;
         color: #dddddd; }
-      .winter-jam-2015-wrapper .join-jam-modal .modal-content input[type="text"], .winter-jam-2015-wrapper .join-jam-modal .modal-content input[type="email"] {
+      .winter-jam-2015-wrapper .modal .modal-content input[type="text"], .winter-jam-2015-wrapper .modal .modal-content input[type="email"] {
         border: 1px solid #dadada;
         color: #222222;
         margin: 2px 6px 6px 5px;
@@ -574,21 +606,24 @@ html body {
         outline: 0 none;
         width: 70%;
         font-size: 1.4em; }
-      .winter-jam-2015-wrapper .join-jam-modal .modal-content button {
+      .winter-jam-2015-wrapper .modal .modal-content button {
         border: 1px solid #dadada;
         color: #222222;
         margin: 2px 6px 16px 5px;
         padding: 10px 25px;
         outline: 0 none;
         font-size: 1.5em; }
-      .winter-jam-2015-wrapper .join-jam-modal .modal-content .join-jam-success {
+      .winter-jam-2015-wrapper .modal .modal-content .join-jam-success {
         display: none; }
-        .winter-jam-2015-wrapper .join-jam-modal .modal-content .join-jam-success .secret-code {
-          color: #ccccff;
+        .winter-jam-2015-wrapper .modal .modal-content .join-jam-success h2 {
+          margin-top: 10px;
+          margin-bottom: 10px; }
+        .winter-jam-2015-wrapper .modal .modal-content .join-jam-success .secret-code {
+          color: #afafff;
           font-family: 'Tangerine', cursive;
           font-size: 5em;
           margin: 0; }
-        .winter-jam-2015-wrapper .join-jam-modal .modal-content .join-jam-success p {
+        .winter-jam-2015-wrapper .modal .modal-content .join-jam-success p {
           font-size: 1.2em;
           width: 80%;
           margin: 0 auto; }
