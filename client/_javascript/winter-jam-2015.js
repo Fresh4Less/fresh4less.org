@@ -27,7 +27,7 @@ function initWinterJam2015(window) {
 	}
 
 
-	var end = new Date("2016-01-01T00:00:00.0-07:00");
+	var end = new Date("2016-01-18T00:00:00.0-07:00");
 	//var end = new Date();
 	//end.setTime(end.getTime() + 2000);
 
@@ -71,6 +71,7 @@ function initWinterJam2015(window) {
 	}
 
 	// participants
+	var jamSubmissionDuration = 24*60*60*1000; //milliseconds
 	var participantsTable = $('.jam-participants-table');
 	var participants = null;
 	var uploadUsername = null;
@@ -79,23 +80,28 @@ function initWinterJam2015(window) {
 		url: '/api/winter-jam-2015/users'})
 		.success(function(data, textStatus) {
 			participants = data.map(function(p) {
-				p.beginDate = new Date(p.beginDate);
+				p.beginDate = new Date(p.beginDate); //convert string to date
 				p.endDate = new Date(p.beginDate);
-				p.endDate.setTime(p.beginDate.getTime() + 24*60*60*1000);
+				p.endDate.setTime(p.beginDate.getTime() + jamSubmissionDuration);
 				return p;
 			});
 			data.forEach(function(p) {
-			participantsTable.find('tbody:last-child').append(
-				$('<tr><td class="jam-participant-name">' + p.name +
-				'</td><td class="jam-participant-time"></td><td class="jam-participant-action"><button>Upload</button></td></tr>')
-				.click(function() {uploadUsername = p.name; enableModal($('.upload-modal'));}));
+				participantsTable.find('tbody:last-child').append(makeParticipantsTableRow(p.name));
 			});
 			updateParticipantCounters();
-			setInterval(updateParticipantCounters, 100);
+			setInterval(updateParticipantCounters, 1000);
 		})
 		.fail(function(jqXHR) {
-			$('#participants-error-message').text(jqXHR.responseText);
+			$('#participants-error-message').text('Error: ' + jqXHR.responseText);
 		});
+
+	function makeParticipantsTableRow(name) {
+		var tableRow = $('<tr><td class="jam-participant-name">' + name +
+			'</td><td class="jam-participant-time"></td><td class="jam-participant-action"></td></tr>');
+		var uploadButton = $('<button>Upload</button>').click(function() {uploadUsername = name; enableModal($('.upload-modal'));});
+		tableRow.find('.jam-participant-action').append(uploadButton);
+		return tableRow;
+	}
 
 	function updateParticipantCounters() {
 		if(participants) {
@@ -112,12 +118,13 @@ function initWinterJam2015(window) {
 
 						var hours = (minutes / 60) | 0;
 						minutes -= hours * 60;
-						$(this).find('td.jam-participant-time').text(hours + ':' + minutes + ':' + seconds);
+						$(this).find('td.jam-participant-time').text(padZeroes(hours, 2) + ':' + padZeroes(minutes, 2) + ':' + padZeroes(seconds, 2));
 					}
 					else {
 						$(this).addClass('jam-time-over');
 						$(this).find('td.jam-participant-time').text('00:00:00');
-						$(this).find('td.jam-participant-action').html('<button>Download</button>');
+						$(this).find('td.jam-participant-action').children().first().replaceWith($('<button>Download</button>')
+							.click(function() {downloadSubmission(participants[i].name);}));
 					}
 				}
 			});
@@ -156,6 +163,11 @@ function initWinterJam2015(window) {
 	joinJamForm.submit(
 		makeSubmitFormAsJson(
 			function(data, textStatus) {
+				var p = { name: data.name, beginDate: new Date() };
+				p.endDate = new Date(p.beginDate);
+				p.endDate.setTime(p.beginDate.getTime() + jamSubmissionDuration);
+				participants.unshift(p);
+				participantsTable.find('tbody').prepend(makeParticipantsTableRow(p.name));
 				var joinJamSuccessElem = $('.join-jam-success');
 				joinJamForm.css('display', 'none');
 				joinJamSuccessElem.find('.secret-code').text(data.secretCode);
@@ -164,7 +176,7 @@ function initWinterJam2015(window) {
 
 			},
 			function(jqXHR) {
-				joinJamErrorMessage.text(jqXHR.responseText);
+				joinJamErrorMessage.text('Error: ' + jqXHR.responseText);
 			}));
 
 	var uploadForm = $('.upload-form');
@@ -173,6 +185,8 @@ function initWinterJam2015(window) {
 
 	uploadForm.submit(function(e) {
 		e.preventDefault();
+		uploadErrorMessage.text('');
+		uploadSuccessMessage.text('Uploading...');
 		var formData = new FormData(this);
 		$.ajax({
 			url: '/api/winter-jam-2015/users/' + uploadUsername + '/submission',
@@ -188,16 +202,20 @@ function initWinterJam2015(window) {
 			})
 		.fail(function(jqXHR) {
 				uploadSuccessMessage.text('');
-				uploadErrorMessage.text(jqXHR.responseText);
+				uploadErrorMessage.text('Error: ' + jqXHR.responseText);
 			});
 	});
 
+	function downloadSubmission(username) {
+		window.location.href = '/api/winter-jam-2015/users/' + username + '/submission';
+	}
+
 	function enableModal(modal) {
-		modal.css('display', 'block');
+		modal.fadeIn(400);
 		centerModalContent(modal);
 	}
 	function disableModal(modal) {
-		modal.css('display', 'none');
+		modal.fadeOut(400);
 	}
 	function makeSubmitFormAsJson(onSuccess, onFail) {
 		return function(e) {

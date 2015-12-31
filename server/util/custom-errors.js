@@ -10,5 +10,6 @@ function _createError(name) {
 
 module.exports = {
 	NotFoundError: _createError('NotFoundError'),
-	ForbiddenError: _createError('ForbiddenError')
+	ForbiddenError: _createError('ForbiddenError'),
+	DuplicateError: _createError('DuplicateError')
 };

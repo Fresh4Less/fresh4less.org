@@ -6,7 +6,8 @@
 			"port": 27017,
 			"dbName": "winter_jam_2015" 
 		},
-		"endTime": "2016-01-01T07:00:00.000Z",
+		"endTime": "2016-01-18T07:00:00.000Z",
+		"tempDir": "/tmp/winter-jam-2015/",
 		"secretCodePrefixes": [
 			"christmas",
 			"hanukkah",
