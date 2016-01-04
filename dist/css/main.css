@@ -494,7 +494,9 @@ html body {
   .winter-jam-2015-wrapper .magnet-prize-count {
     color: #ffff00; }
   .winter-jam-2015-wrapper img {
-    width: 40%;
+    width: auto;
+    height: auto;
+    max-height: 250px;
     display: block;
     margin: 0.5em auto;
     border: 1px solid #e0e0e0;
@@ -531,10 +533,13 @@ html body {
   .winter-jam-2015-wrapper .page-heading {
     font-family: 'Tangerine', cursive;
     text-align: center;
-    font-size: 5em;
+    font-size: 8.5vw;
     margin-top: 1.5em;
     margin-bottom: 0.5em;
     text-shadow: 3px 3px 1px #dd0000; }
+  @media (max-width: 650px) {
+    .winter-jam-2015-wrapper .page-heading {
+      font-size: 5em; } }
   .winter-jam-2015-wrapper .time-remaining {
     color: #afafff;
     font-family: 'Tangerine', cursive;
@@ -542,8 +547,8 @@ html body {
     margin-top: 0;
     margin-bottom: 0.5em;
     line-height: 1em; }
-    .winter-jam-2015-wrapper .time-remaining .voting {
-      color: #ffffcc; }
+    .winter-jam-2015-wrapper .time-remaining.voting {
+      color: #ffffaa; }
   .winter-jam-2015-wrapper #jam-time-remaining.ended {
     color: #ff5555; }
   .winter-jam-2015-wrapper .jam-theme {
@@ -592,7 +597,7 @@ html body {
   .winter-jam-2015-wrapper .vote-button {
     font-family: 'Tangerine', cursive;
     display: none;
-    width: 150px;
+    width: 350px;
     height: 100px;
     font-size: 4em;
     font-weight: 700;

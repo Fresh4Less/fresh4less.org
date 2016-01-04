@@ -218,7 +218,7 @@ function letItSnow(canvas, options, isCopy) {
 
 ;
 
-function initWinterJam2015(window) {
+function initWinterJam2015(window, jamEndDate, votingEndDate) {
 	// countdown timer
 	var jamTimeRemainingElem = $('#jam-time-remaining');
 	var jamDaysElem = jamTimeRemainingElem.find('.jam-days');
@@ -227,12 +227,12 @@ function initWinterJam2015(window) {
 	var jamSecondsElem = jamTimeRemainingElem.find('.jam-seconds');
 	var jamPhase = 'jam'; //other values: vote, end
 
-	var jamEnd = new Date("2016-01-18T00:00:00.0-07:00");
-	var votingEnd = new Date("2016-02-00T00:00:00.0-07:00");
+	//var jamEnd = new Date("2016-01-18T00:00:00.0-07:00");
+	//var votingEnd = new Date("2016-02-00T00:00:00.0-07:00");
 	//var jamEnd = new Date();
-	//jamEnd.setTime(jamEnd.getTime() + 8000);
+	//jamEnd.setTime(jamEnd.getTime() + 1000);
 	//var votingEnd = new Date();
-	//votingEnd.setTime(votingEnd.getTime() + 16000);
+	//votingEnd.setTime(votingEnd.getTime() + 1600000);
 
 	updateCounter();
 	var counterUpdate = setInterval(updateCounter, 1000);
@@ -240,7 +240,7 @@ function initWinterJam2015(window) {
 		var now = new Date();
 		var milliseconds = null;
 		if(jamPhase === 'jam') {
-			milliseconds = Math.floor(jamEnd - now);
+			milliseconds = Math.floor(jamEndDate - now);
 			if(milliseconds < 0) {
 				jamPhase = 'vote';
 				$('.join-jam-button').css('display', 'none');
@@ -250,7 +250,7 @@ function initWinterJam2015(window) {
 			}
 		}
 		if(jamPhase === 'vote') {
-			milliseconds = Math.floor(votingEnd - now);
+			milliseconds = Math.floor(votingEndDate - now);
 			if(milliseconds < 0) {
 				jamPhase = 'end';
 				$('.vote-button').css('display', 'none');
@@ -349,6 +349,7 @@ function initWinterJam2015(window) {
 
 	// modals
 	$('.join-jam-button').click(function() {enableModal($('.join-jam-modal'));});
+	$('.vote-button').click(function() {enableModal($('.vote-modal'));});
 	$('.modal').click(function(e) {
 		if(this === e.target) {
 			disableModal($(this));
@@ -421,6 +422,9 @@ function initWinterJam2015(window) {
 				uploadErrorMessage.text('Error: ' + jqXHR.responseText);
 			});
 	});
+
+	//var voteForm = #('.vote-form');
+	//voteFormErrorMessage = voteForm.find('.error-message');
 
 	function downloadSubmission(username) {
 		window.location.href = '/api/winter-jam-2015/users/' + username + '/submission';

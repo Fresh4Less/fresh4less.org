@@ -22,18 +22,21 @@ layout: bare
 			chance to win SWEET PRIZES.</p>
 
 			<button class="join-jam-button" type="button">Join the Jam</button>
-			<button class="vote-button" type="button">Vote</button>
+			<button class="vote-button" type="button">Place your Vote</button>
 			
 			<h2>What is the Fresh4Less Winter Solstice Jam?</h2>
 
 			<p>The Winter Solstice Jam is a competition to create an
-			interactive project from scratch in 24 hours. You get to choose
-			when you begin your 24 hour entry, so you can fit it into your
-			schedule.</p>
+			interactive project from scratch in 24 hours, based on a given
+			theme. You get to choose when you begin your 24 hour entry, so you
+			can fit it into your schedule.</p>
 			
 			<p>Everyone who participates must judge every other entry and vote
 			for their favorite. The winner and runner-up will both win a prize.
 			Collaboration is not allowed.</p>
+
+			<p>The jam ends and voting begins on January 18 at 12:00am MST.
+			Voting ends February 1 12:00am MST.</p>
 
 			<h2>What can I enter?</h2>
 
@@ -84,13 +87,13 @@ layout: bare
 			<em class="magnet-prize-count">three</em> <strong>Fresh4Less Winter
 			Jam 2016 Magnets</strong>, to decorate their refrigerator.
 			Additionally, every participant will receive one <strong>Fresh4Less
-			Winter Jam 2016 Magnet</strong>
+			Winter Jam 2016 Magnet</strong>.
 			</p> <img src="magnet.jpg" />
 
 			<h2>What if I have more questions?</h2>
 
 			<p>You can contact Elliot at
-			<a href="mailto:elliot@neurotischism.com">elliot@neurotischism.com</a></p>
+			<a href="mailto:elliot@neurotischism.com">elliot@neurotischism.com</a>.</p>
 
 			<h2>Participants</h2>
 
@@ -153,10 +156,44 @@ layout: bare
 			</form>
 		</div>
 	</div>
+	<div class="vote-modal modal">
+		<div class="modal-content">
+			<h1>Place your Vote</h1>
+			<p>Sorry, voting isn't implemented yet. Please email your vote to
+			<a href="mailto:elliot@neurotischism.com">elliot@neurotischism.com</a>.</p>
+			<p>Your vote should include your submission name, the names of your
+			favorite and second favorite submitters, and your <em>secret
+			code</em>.</p>
+			<!--
+			<form class="vote-form" method="POST">
+				<div>
+					<label for="vote-favorite">Favorite:</label>
+					<input type="text" id="vote-favorite" name="favorite" required />
+				</div>
+				<div>
+					<label for="vote-second-favorite">Second Favorite:</label>
+					<input type="text" id="vote-second-favorite" name="secondFavorite" required />
+				</div>
+				<div>
+					<label for="vote-secret-code">Secret Code:</label>
+					<input type="text" id="vote-secret-code" name="secretCode" required />
+				</div>
+				<div class="vote-submit-button">
+					<label>&nbsp;</label>
+					<button type="submit">Vote</button>
+				</div>
+				<div class="success-message">
+				</div>
+				<div class="error-message">
+				</div>
+			</form>
+-->
+		</div>
+	</div>
 </div>
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function(){
 		initSnowCanvas(window);
-		initWinterJam2015(window);
+		initWinterJam2015(window, new Date("2016-01-18T00:00:00.0-07:00"), new Date("2016-02-00T00:00:00.0-07:00"));
 	});
 </script>
