@@ -1,70 +1,67 @@
 
 function initWinterJam2015(window) {
 	// countdown timer
-	var jamTimeRemainingElem = window.document.getElementById('jam-time-remaining');
-	var jamDaysElem = null;
-	var jamHoursElem = null;
-	var jamMinutesElem = null;
-	var jamSecondsElem = null;
-	for(var i = 0; i < jamTimeRemainingElem.childNodes.length; i++) {
-		var node = jamTimeRemainingElem.childNodes[i];
-		switch(node.className) {
-			case 'jam-days':
-				jamDaysElem = node;
-				break;
-			case 'jam-hours':
-				jamHoursElem = node;
-				break;
-			case 'jam-minutes':
-				jamMinutesElem = node;
-				break;
-			case 'jam-seconds':
-				jamSecondsElem = node;
-				break;
-			default:
-				break;
-		}
-	}
+	var jamTimeRemainingElem = $('#jam-time-remaining');
+	var jamDaysElem = jamTimeRemainingElem.find('.jam-days');
+	var jamHoursElem = jamTimeRemainingElem.find('.jam-hours');
+	var jamMinutesElem = jamTimeRemainingElem.find('.jam-minutes');
+	var jamSecondsElem = jamTimeRemainingElem.find('.jam-seconds');
+	var jamPhase = 'jam'; //other values: vote, end
 
-
-	var end = new Date("2016-01-18T00:00:00.0-07:00");
-	//var end = new Date();
-	//end.setTime(end.getTime() + 2000);
+	var jamEnd = new Date("2016-01-18T00:00:00.0-07:00");
+	var votingEnd = new Date("2016-02-00T00:00:00.0-07:00");
+	//var jamEnd = new Date();
+	//jamEnd.setTime(jamEnd.getTime() + 8000);
+	//var votingEnd = new Date();
+	//votingEnd.setTime(votingEnd.getTime() + 16000);
 
 	updateCounter();
 	var counterUpdate = setInterval(updateCounter, 1000);
 	function updateCounter() {
 		var now = new Date();
-		var milliseconds = Math.floor(end - now);
-		if(milliseconds < 0) {
-			window.clearInterval(counterUpdate);
-			jamTimeRemainingElem.textContent = 'THE JAM HAS ENDED, SEE YOU IN JUNE!';
-			jamTimeRemainingElem.className = jamTimeRemainingElem.className + ' ended';
-			$('.join-jam-button').css('display', 'none');
+		var milliseconds = null;
+		if(jamPhase === 'jam') {
+			milliseconds = Math.floor(jamEnd - now);
+			if(milliseconds < 0) {
+				jamPhase = 'vote';
+				$('.join-jam-button').css('display', 'none');
+				$('.vote-button').css('display', 'block');
+				$('.jam-time-remaining-label').text('Voting time remaining:');
+				$('.time-remaining').addClass('voting');
+			}
 		}
-		else {
-			var seconds = (milliseconds / 1000) | 0;
-			milliseconds -= seconds * 1000;
-
-			var minutes = (seconds / 60) | 0;
-			seconds -= minutes * 60;
-
-			var hours = (minutes / 60) | 0;
-			minutes -= hours * 60;
-
-			var days = (hours / 24) | 0;
-			var hours2 = hours - days * 24;
-
-			//var secondsStr = padZeroes(seconds, 2);
-			//var minutesStr = padZeroes(minutes, 2);
-			//var hoursStr = padZeroes(hours2, 2);
-
-			jamDaysElem.textContent = days;
-			jamHoursElem.textContent = hours2;
-			jamMinutesElem.textContent = minutes;
-			jamSecondsElem.textContent = seconds;
+		if(jamPhase === 'vote') {
+			milliseconds = Math.floor(votingEnd - now);
+			if(milliseconds < 0) {
+				jamPhase = 'end';
+				$('.vote-button').css('display', 'none');
+				jamTimeRemainingElem.html('<h1>THE JAM HAS ENDED, SEE YOU IN JUNE!</h1>');
+				jamTimeRemainingElem.addClass('ended');
+				window.clearInterval(counterUpdate);
+			}
 		}
+		if(milliseconds === null) {
+			return;
+		}
+
+		var seconds = (milliseconds / 1000) | 0;
+		milliseconds -= seconds * 1000;
+
+		var minutes = (seconds / 60) | 0;
+		seconds -= minutes * 60;
+
+		var hours = (minutes / 60) | 0;
+		minutes -= hours * 60;
+
+		var days = (hours / 24) | 0;
+		var hours2 = hours - days * 24;
+
+		jamDaysElem.text(days);
+		jamHoursElem.text(hours2);
+		jamMinutesElem.text(minutes);
+		jamSecondsElem.text(seconds);
 	}
+
 	function padZeroes(num, size) {
 		var s = "000000000" + num;
 		return s.substr(s.length-size);

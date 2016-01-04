@@ -8,11 +8,12 @@ html body {
 	top: 0;
 	width: 100%;
 	min-height: 100%;
-	background-color:#232323;
+	background-color: #232323;
 	color: #fff;
 	font-family: "Arial", sans-serif;
 
 	h1 {
+		text-align: center;
 		font-size: 2em;
 	}
 	h2 {
@@ -24,6 +25,29 @@ html body {
 	p {
 		font-style: normal;
 		font-size: 1.2em;
+	}
+
+	a {
+		color: #5B9BEE;
+
+		&:visited {
+			color: #2a7ae2
+		}
+		&:hover {
+			color: #dddddd;
+		}
+	}
+
+	.magnet-prize-count {
+		color: #ffff00;
+	}
+
+	img {
+		width: 40%;
+		display: block;
+		margin: 0.5em auto;
+		border: 1px solid #e0e0e0;
+		border-radius: 50px;
 	}
 
 	table {
@@ -76,19 +100,34 @@ html body {
 		font-family: 'Tangerine', cursive;
 		text-align: center;
 		font-size: 5em;
-		margin: 0.5em;
+		margin-top: 1.5em;
+		margin-bottom: 0.5em;
+ 		text-shadow: 3px 3px 1px #dd0000;
 	}
 
 	.time-remaining {
-		text-align: center;
 		color: #afafff;
+		font-family: 'Tangerine', cursive;
+		font-size: 4em;
+		margin-top: 0;
+		margin-bottom: 0.5em;
+		line-height: 1em;
+		& .voting {
+			color: #ffffcc;
+		}
 	}
+
 	#jam-time-remaining.ended {
 		color: #ff5555;
 	}
 
 	.jam-theme {
-		text-align: center;
+		font-family: 'Tangerine', cursive;
+		font-size: 4em;
+		color: #77ff77;
+		margin: 0;
+		line-height: 1em;
+         /*text-shadow: 2px 2px 1px #00dd00;*/
 	}
 
 	.wrapper {
@@ -128,6 +167,17 @@ html body {
 		font-family: 'Tangerine', cursive;
 		display: block;
 		width: 300px;
+		height: 100px;
+		font-size: 4em;
+		font-weight: 700;
+		margin: 50px auto;
+		border-radius: 50px;
+	}
+
+	.vote-button {
+		font-family: 'Tangerine', cursive;
+		display: none;
+		width: 150px;
 		height: 100px;
 		font-size: 4em;
 		font-weight: 700;
