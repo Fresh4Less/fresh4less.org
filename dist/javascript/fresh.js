@@ -233,6 +233,7 @@ function initWinterJam2015(window, jamEndDate, votingEndDate) {
 	//jamEnd.setTime(jamEnd.getTime() + 1000);
 	//var votingEnd = new Date();
 	//votingEnd.setTime(votingEnd.getTime() + 1600000);
+	//votingEndDate.setTime(new Date().getTime() + 2000);
 
 	updateCounter();
 	var counterUpdate = setInterval(updateCounter, 1000);
@@ -256,6 +257,7 @@ function initWinterJam2015(window, jamEndDate, votingEndDate) {
 				$('.vote-button').css('display', 'none');
 				jamTimeRemainingElem.html('<h1>THE JAM HAS ENDED, SEE YOU IN JUNE!</h1>');
 				jamTimeRemainingElem.addClass('ended');
+				$('.jam-results').css('display', 'block');
 				window.clearInterval(counterUpdate);
 			}
 		}

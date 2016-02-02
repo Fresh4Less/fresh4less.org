@@ -608,6 +608,19 @@ html body {
     text-align: center; }
   .winter-jam-2015-wrapper .success-message {
     text-align: center; }
+  .winter-jam-2015-wrapper .jam-results {
+    display: none; }
+  .winter-jam-2015-wrapper .jam-results-header {
+    font-family: 'Tangerine', cursive;
+    font-size: 6em;
+    color: #77ff77;
+    margin: 0;
+    line-height: 1em;
+    color: #77ff77; }
+  .winter-jam-2015-wrapper .jam-winner {
+    color: #ffffaa; }
+  .winter-jam-2015-wrapper .jam-runner-up {
+    color: #ffffaa; }
   .winter-jam-2015-wrapper .modal {
     position: fixed;
     left: 0;

@@ -200,6 +200,25 @@ html body {
 		text-align: center;
 	}
 
+	.jam-results {
+		display: none;
+	}
+
+	.jam-results-header {
+		font-family: 'Tangerine', cursive;
+		font-size: 6em;
+		color: #77ff77;
+		margin: 0;
+		line-height: 1em;
+		color: #77ff77;
+	}
+	.jam-winner {
+		color: #ffffaa;
+	}
+	.jam-runner-up {
+		color: #ffffaa;
+	}
+
 	.modal {
 		position: fixed;
 		left: 0;
